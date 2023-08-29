@@ -1,6 +1,11 @@
+@use "sass:map";
+@import "../styles/variables";
+
 .main {
   display: flex;
   flex-direction: column;
   padding: 3rem;
   min-height: 100vh;
+  background-color: map.get($colors, "dark-grey");
+  color: map.get($colors, "white");
 }
