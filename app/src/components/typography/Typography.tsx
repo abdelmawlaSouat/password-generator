@@ -6,8 +6,9 @@ import styles from "./Typography.module.scss";
 export interface TypographyProps {
   children: ReactNode;
   variant: "h1" | "h2" | "body";
-  tag?: "h1" | "h2" | "p" | "span" | "div";
+  tag?: "h1" | "h2" | "p" | "span" | "div" | "label";
   className?: string;
+  htmlFor?: string;
 }
 
 const jetBrainsMono = JetBrains_Mono({
@@ -20,6 +21,7 @@ export const Typography: FC<TypographyProps> = ({
   className,
   variant,
   tag: Tag = "p",
+  ...props
 }) => {
   return (
     <Tag
@@ -28,6 +30,7 @@ export const Typography: FC<TypographyProps> = ({
         jetBrainsMono.className,
         className
       )}
+      {...props}
     >
       {children}
     </Tag>

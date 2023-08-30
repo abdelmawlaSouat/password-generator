@@ -25,9 +25,9 @@ export const Slider: FC<SliderProps> = ({
   return (
     <div>
       <div className={styles.labelWrapper}>
-        <label htmlFor={id}>
-          <Typography variant="body">{label}</Typography>
-        </label>
+        <Typography variant="body" tag="label" htmlFor={id}>
+          {label}
+        </Typography>
 
         <Typography variant="h2" tag="span" className={styles.value}>
           {value}

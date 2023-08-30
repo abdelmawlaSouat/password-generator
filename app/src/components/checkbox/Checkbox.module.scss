@@ -1,0 +1,33 @@
+@use "sass:map";
+@import "../../styles/variables";
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.root {
+    background-color: map.get($colors, "dark-grey");
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid map.get($colors, "white");
+    transition: background-color 0.3s;
+    cursor: pointer;
+
+    &.isChecked {
+        background-color: map.get($colors, "green");
+        border: 0;
+    }
+}
+
+.indicator {
+    color: map.get($colors, "black");
+}
+
+.label {
+    padding-left: 1.5rem;
+}
