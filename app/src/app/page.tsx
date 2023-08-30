@@ -5,6 +5,7 @@ import styles from "./page.module.scss";
 import { Slider } from "@/components/slider";
 import { Typography } from "@/components/typography";
 import { useState } from "react";
+import { Button } from "@/components/button";
 
 export default function Home() {
   const [value, setValue] = useState(10);
@@ -47,6 +48,13 @@ export default function Home() {
         onChange={setChecked}
         checked={checked}
       />
+
+      <Typography variant="body">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
+        voluptatibus. Quisquam, quos voluptatibus. Quisquam, quos voluptatibus.
+      </Typography>
+
+      <Button onClick={() => console.log("Clicked")}>Generate Password</Button>
     </main>
   );
 }
