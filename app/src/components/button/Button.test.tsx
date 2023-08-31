@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Button } from "./";
+import { Button } from "./Button";
 
 describe("Button", () => {
   test("should render the button with the text", async () => {

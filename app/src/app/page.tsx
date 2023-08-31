@@ -10,6 +10,7 @@ import {
   StrengthStatus,
   PasswordStrengthStatus,
 } from "@/components/strengthStatus";
+import { TextField } from "@/components/textField";
 
 export default function Home() {
   const [value, setValue] = useState(10);
@@ -72,6 +73,13 @@ export default function Home() {
       <StrengthStatus status={PasswordStrengthStatus.MEDIUM} />
 
       <StrengthStatus status={PasswordStrengthStatus.STRONG} />
+
+      <Typography variant="body">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
+        voluptatibus. Quisquam, quos voluptatibus. Quisquam, quos voluptatibus.
+      </Typography>
+
+      <TextField value="passwordoo" />
     </main>
   );
 }
