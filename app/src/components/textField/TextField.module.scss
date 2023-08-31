@@ -1,0 +1,43 @@
+@use "sass:map";
+@import "../../styles/variables";
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background-color: map.get($colors, "dark-grey");
+}
+
+.field {
+    &.isEmpty {
+        color: map.get($colors, "light-grey");
+    }
+}
+
+.btnWrapper {
+    display: flex;
+    gap: 1rem;
+
+    > span {
+        color: map.get($colors, "green");
+    }
+}
+
+.btn {
+    background: transparent;
+    border: 0;
+    padding: 0;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: map.get($colors, "green");
+    transition: 0.2s color;
+    cursor: pointer;
+
+    &:hover {
+        color: map.get($colors, "white");
+    }
+}

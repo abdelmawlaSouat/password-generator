@@ -1,0 +1,52 @@
+@use "sass:map";
+@import "../../styles/variables";
+
+.labelWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.value {
+    color: map.get($colors, "green");
+}
+
+.root {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.track {
+    background-color: map.get($colors, "dark-grey");
+    position: relative;
+    flex-grow: 1;
+    height: 0.5rem;
+}
+
+.range {
+    position: absolute;
+    background-color: map.get($colors, "green");
+    height: 100%;
+}
+
+.thumb {
+    display: block;
+    width: 1.75rem;
+    height: 1.75rem;
+    background-color: map.get($colors, "white");
+    box-shadow: 0 2px 10px map.get($colors, "dark-grey");
+    border-radius: 50%;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: map.get($colors, "dark-grey");
+        border: 2px map.get($colors, "green") solid;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}

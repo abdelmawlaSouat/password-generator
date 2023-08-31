@@ -1,0 +1,21 @@
+// Colors
+$colors: (
+    "dark-grey": #24232c,
+    "light-grey": #817d92,
+    "white": #e6e5ea,
+    "black": #18171f,
+    "green": #a4ffaf,
+    "red": #f64a4a,
+    "orange": #fb7c58,
+    "yellow": #f8cd65
+);
+
+// Breakpoints
+$grid-breakpoints: (
+    "xs": 0,
+    "sm": 576px,
+    "md": 768px,
+    "lg": 992px,
+    "xl": 1200px,
+    "xxl": 1400px
+);

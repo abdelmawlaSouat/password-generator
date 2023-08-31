@@ -1,0 +1,21 @@
+@use "sass:map";
+@import "../../styles/variables";
+
+.button {
+    background-color: map.get($colors, "green");
+    padding: 1.3125rem 10rem;
+    border: 0;
+    width: fit-content;
+    transition: 0.2s background-color;
+
+    &:hover {
+        background-color: map.get($colors, "dark-grey");
+        color: map.get($colors, "green");
+        border: 2px solid map.get($colors, "green");
+        cursor: pointer;
+    }
+}
+
+.icon {
+    margin-left: 1.5rem;
+}
