@@ -6,6 +6,10 @@ import { Slider } from "@/components/slider";
 import { Typography } from "@/components/typography";
 import { useState } from "react";
 import { Button } from "@/components/button";
+import {
+  StrengthStatus,
+  PasswordStrengthStatus,
+} from "@/components/strengthStatus";
 
 export default function Home() {
   const [value, setValue] = useState(10);
@@ -55,6 +59,19 @@ export default function Home() {
       </Typography>
 
       <Button onClick={() => console.log("Clicked")}>Generate Password</Button>
+
+      <Typography variant="body">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
+        voluptatibus. Quisquam, quos voluptatibus. Quisquam, quos voluptatibus.
+      </Typography>
+
+      <StrengthStatus status={PasswordStrengthStatus.TOO_WEAK} />
+
+      <StrengthStatus status={PasswordStrengthStatus.WEAK} />
+
+      <StrengthStatus status={PasswordStrengthStatus.MEDIUM} />
+
+      <StrengthStatus status={PasswordStrengthStatus.STRONG} />
     </main>
   );
 }
