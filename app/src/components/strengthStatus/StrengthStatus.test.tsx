@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { PasswordStrengthStatus, StrengthStatus } from "./StrengthStatus";
+import { StrengthStatus } from "./StrengthStatus";
+import { PasswordStrengthStatus } from "@/types";
 
 describe("StrengthStatus", () => {
   test.each`

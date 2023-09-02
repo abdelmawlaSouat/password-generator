@@ -4,8 +4,41 @@ import { Checkbox } from "../checkbox";
 import { StrengthStatus } from "../strengthStatus";
 import { Button } from "../button";
 import styles from "./PasswordGeneratorForm.module.scss";
-import { AppState } from "@/types";
-import { MAX_SLIDER_LENGTH } from "@/constants";
+import { AppState, PasswordStrengthStatus } from "@/types";
+import { MAX_SLIDER_LENGTH, SYMBOLS } from "@/constants";
+import { generate } from "randomstring";
+import { passwordStrength } from "check-password-strength";
+
+export const capitalization = (values: AppState) => {
+  if (values.includeUppercaseLetters && values.includeLowercaseLetters) {
+    return;
+  }
+  if (values.includeUppercaseLetters) {
+    return "uppercase";
+  }
+  if (values.includeLowercaseLetters) {
+    return "lowercase";
+  }
+
+  return;
+};
+
+const getPasswordStrengthStatus = (password: string) => {
+  const strength = passwordStrength(password);
+
+  if (strength.value === "Too weak") {
+    return PasswordStrengthStatus.TOO_WEAK;
+  }
+  if (strength.value === "Weak") {
+    return PasswordStrengthStatus.WEAK;
+  }
+  if (strength.value === "Medium") {
+    return PasswordStrengthStatus.MEDIUM;
+  }
+  if (strength.value === "Strong") {
+    return PasswordStrengthStatus.STRONG;
+  }
+};
 
 export interface PasswordGeneratorFormProps {
   values: AppState;
@@ -16,6 +49,25 @@ export const PasswordGeneratorForm: FC<PasswordGeneratorFormProps> = ({
   values,
   setValues,
 }) => {
+  const onClick = () => {
+    const password = generate({
+      length: values.characterLength,
+      // @ts-ignore
+      charset: [
+        "alphabetic",
+        values.includeNumbers ? "numeric" : "",
+        values.includeSymbols ? SYMBOLS : "",
+      ],
+      capitalization: capitalization(values),
+    });
+
+    setValues({
+      ...values,
+      password,
+      strengthStatus: getPasswordStrengthStatus(password),
+    });
+  };
+
   return (
     <form className={styles.form}>
       <Slider
@@ -63,7 +115,7 @@ export const PasswordGeneratorForm: FC<PasswordGeneratorFormProps> = ({
 
       <StrengthStatus status={values.strengthStatus} />
 
-      <Button onClick={() => console.log("Clicked")}>Generate</Button>
+      <Button onClick={onClick}>Generate</Button>
     </form>
   );
 };

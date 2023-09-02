@@ -6,6 +6,7 @@ import styles from "./Typography.module.scss";
 export interface TypographyProps extends HTMLAttributes<HTMLElement> {
   variant: "h1" | "h2" | "body";
   tag?: "h1" | "h2" | "p" | "span" | "div" | "label";
+  htmlFor?: string;
 }
 
 const jetBrainsMono = JetBrains_Mono({
@@ -18,6 +19,7 @@ export const Typography: FC<TypographyProps> = ({
   className,
   variant,
   tag: Tag = "p",
+  htmlFor,
   ...props
 }) => {
   return (
@@ -27,6 +29,7 @@ export const Typography: FC<TypographyProps> = ({
         jetBrainsMono.className,
         className
       )}
+      htmlFor={htmlFor}
       {...props}
     >
       {children}

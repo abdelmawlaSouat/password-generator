@@ -2,13 +2,7 @@ import { FC } from "react";
 import { Typography } from "../typography";
 import styles from "./StrengthStatus.module.scss";
 import classNames from "classnames";
-
-export enum PasswordStrengthStatus {
-  TOO_WEAK = "too weak",
-  WEAK = "weak",
-  MEDIUM = "medium",
-  STRONG = "strong",
-}
+import { PasswordStrengthStatus } from "@/types";
 
 const statuses = {
   [PasswordStrengthStatus.TOO_WEAK]: {
@@ -36,7 +30,7 @@ const statuses = {
 const BAR_LENGTH = 4;
 
 export interface StrengthStatusProps {
-  status: PasswordStrengthStatus;
+  status?: PasswordStrengthStatus;
 }
 
 export interface RectangleProps {
@@ -54,8 +48,6 @@ const Rectangle = ({ color }: { color?: string }) => {
 };
 
 export const StrengthStatus: FC<StrengthStatusProps> = ({ status }) => {
-  const statusItem = statuses[status];
-
   return (
     <div className={styles.wrapper}>
       <Typography variant="body" tag="span" className={styles.label}>
@@ -64,17 +56,23 @@ export const StrengthStatus: FC<StrengthStatusProps> = ({ status }) => {
 
       <div className={styles.statusWrapper}>
         <Typography variant="h2" tag="span">
-          {statusItem.label}
+          {status && statuses[status].label}
         </Typography>
 
         <div className={styles.rectangleWrapper}>
-          {[...Array(statusItem.length)].map((_) => (
-            <Rectangle color={statusItem.color} key={statusItem.label} />
-          ))}
+          {status ? (
+            <>
+              {[...Array(statuses[status].length)].map((key) => (
+                <Rectangle color={statuses[status].color} key={key} />
+              ))}
 
-          {[...Array(BAR_LENGTH - statusItem.length)].map((key) => (
-            <Rectangle key={key} />
-          ))}
+              {[...Array(BAR_LENGTH - statuses[status].length)].map((key) => (
+                <Rectangle key={key} />
+              ))}
+            </>
+          ) : (
+            [...Array(BAR_LENGTH)].map((key) => <Rectangle key={key} />)
+          )}
         </div>
       </div>
     </div>
