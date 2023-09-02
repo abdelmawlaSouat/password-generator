@@ -9,7 +9,7 @@ export interface SliderProps {
   min: number;
   max: number;
   label: string;
-  id: string;
+  id?: string;
   step?: number;
 }
 

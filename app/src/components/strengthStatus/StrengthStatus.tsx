@@ -68,8 +68,8 @@ export const StrengthStatus: FC<StrengthStatusProps> = ({ status }) => {
         </Typography>
 
         <div className={styles.rectangleWrapper}>
-          {[...Array(statusItem.length)].map((key) => (
-            <Rectangle color={statusItem.color} key={key} />
+          {[...Array(statusItem.length)].map((_) => (
+            <Rectangle color={statusItem.color} key={statusItem.label} />
           ))}
 
           {[...Array(BAR_LENGTH - statusItem.length)].map((key) => (

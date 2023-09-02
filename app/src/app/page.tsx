@@ -1,85 +1,35 @@
 "use client";
 
-import { Checkbox } from "@/components/checkbox";
 import styles from "./page.module.scss";
-import { Slider } from "@/components/slider";
 import { Typography } from "@/components/typography";
 import { useState } from "react";
-import { Button } from "@/components/button";
-import {
-  StrengthStatus,
-  PasswordStrengthStatus,
-} from "@/components/strengthStatus";
+import { PasswordStrengthStatus } from "@/components/strengthStatus";
 import { TextField } from "@/components/textField";
+import { PasswordGeneratorForm } from "@/components/passwordGeneratorForm";
+import { DEFAULT_CHARACTER_LENGTH } from "@/constants";
 
 export default function Home() {
-  const [value, setValue] = useState(10);
-  const [checked, setChecked] = useState(false);
+  const [password, setPassword] = useState("");
+  const [state, setState] = useState({
+    characterLength: DEFAULT_CHARACTER_LENGTH,
+    includeUppercaseLetters: false,
+    includeLowercaseLetters: false,
+    includeNumbers: false,
+    includeSymbols: false,
+    strengthStatus: PasswordStrengthStatus.TOO_WEAK,
+  });
 
   return (
     <main className={styles.main}>
-      <Typography variant="h1" tag="h1">
-        Welcome to Next.js!
-      </Typography>
+      <div className={styles.content}>
+        <Typography variant="h2" tag="h1" className={styles.title}>
+          Password Generator
+        </Typography>
 
-      <Typography variant="h2" tag="h2">
-        Get started by editing
-      </Typography>
+        <TextField value={password} />
 
-      <Typography variant="body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
-        voluptatibus. Quisquam, quos voluptatibus. Quisquam, quos voluptatibus.
-      </Typography>
-
-      <Slider
-        id="characters-length"
-        label="Character Length"
-        min={1}
-        max={25}
-        onChange={(value) => {
-          setValue(value[0]);
-        }}
-        value={value}
-      />
-
-      <Typography variant="body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
-        voluptatibus. Quisquam, quos voluptatibus. Quisquam, quos voluptatibus.
-      </Typography>
-
-      <Checkbox
-        id="checkbox-1"
-        label="Checkbox 1"
-        onChange={setChecked}
-        checked={checked}
-      />
-
-      <Typography variant="body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
-        voluptatibus. Quisquam, quos voluptatibus. Quisquam, quos voluptatibus.
-      </Typography>
-
-      <Button onClick={() => console.log("Clicked")}>Generate Password</Button>
-
-      <Typography variant="body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
-        voluptatibus. Quisquam, quos voluptatibus. Quisquam, quos voluptatibus.
-      </Typography>
-
-      <StrengthStatus status={PasswordStrengthStatus.TOO_WEAK} />
-
-      <StrengthStatus status={PasswordStrengthStatus.WEAK} />
-
-      <StrengthStatus status={PasswordStrengthStatus.MEDIUM} />
-
-      <StrengthStatus status={PasswordStrengthStatus.STRONG} />
-
-      <Typography variant="body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
-        voluptatibus. Quisquam, quos voluptatibus. Quisquam, quos voluptatibus.
-      </Typography>
-
-      <TextField value="passwordoo" />
+        <PasswordGeneratorForm values={state} setValues={setState} />
+      </div>
     </main>
   );
 }

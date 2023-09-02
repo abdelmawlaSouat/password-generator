@@ -7,10 +7,12 @@
     border: 0;
     width: fit-content;
     transition: 0.2s background-color;
+    font-weight: bold;
 
     &:hover {
         background-color: map.get($colors, "dark-grey");
         color: map.get($colors, "green");
+        padding: 1.1875rem 9.875rem;
         border: 2px solid map.get($colors, "green");
         cursor: pointer;
     }

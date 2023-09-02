@@ -6,10 +6,10 @@ import { Typography } from "../typography";
 import classNames from "classnames";
 
 export interface CheckboxProps {
-  id: string;
   label: string;
   onChange: (value: boolean) => void;
   checked: boolean;
+  id?: string;
 }
 
 export const Checkbox: FC<CheckboxProps> = ({
