@@ -6,6 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install modules
-        run: cd ./app && yarn
+        run: yarn
       - name: Build the application
-        run: cd ./app && yarn build
+        run: yarn build
