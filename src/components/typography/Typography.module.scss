@@ -1,19 +1,39 @@
+@use "sass:map";
+@import "../../styles/variables";
+@import "../../styles/mixins.scss";
+
 .h1 {
-    font-size: 2rem;
-    line-height: 2.7rem;
+    font-size: 1.7rem;
+    line-height: 2rem;
+
+    @include breakpoint-min(map.get($breakpoints, "md")) {
+        font-size: 2rem;
+        line-height: 2.7rem;
+    }
 }
 
 .h2 {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+
+    @include breakpoint-min(map.get($breakpoints, "md")) {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
 }
 
 .h1,
 .h2 {
     font-weight: 700;
+    margin: 0;
 }
 
 .body {
-    font-size: 1.125rem;
+    font-size: 1rem;
     line-height: 1.5rem;
+
+    @include breakpoint-min(map.get($breakpoints, "md")) {
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+    }
 }

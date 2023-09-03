@@ -1,12 +1,17 @@
 @use "sass:map";
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 2rem;
+    padding: 1rem;
     background-color: map.get($colors, "black");
+
+    @include breakpoint-min(map.get($breakpoints, "md")) {
+        padding: 1.5rem 2rem;
+    }
 }
 
 .statusWrapper {

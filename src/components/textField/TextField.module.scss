@@ -1,12 +1,17 @@
 @use "sass:map";
 @import "../../styles/variables";
+@import "../../styles/mixins.scss";
 
 .wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 2rem;
+    padding: 1rem;
     background-color: map.get($colors, "dark-grey");
+
+    @include breakpoint-min(map.get($breakpoints, "md")) {
+        padding: 1.5rem 2rem;
+    }
 }
 
 .field {
@@ -17,7 +22,11 @@
 
 .btnWrapper {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
+
+    @include breakpoint-min(map.get($breakpoints, "sm")) {
+        gap: 1rem;
+    }
 
     > span {
         color: map.get($colors, "green");
