@@ -3,9 +3,22 @@
 
 .main {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   padding: 3rem;
   min-height: 350vh;
   background-color: map.get($colors, "black");
   color: map.get($colors, "white");
+}
+
+.content {
+  min-width: 28.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.title {
+  color: map.get($colors, "light-grey");
+  margin-bottom: 2rem;
+  text-align: center;
 }

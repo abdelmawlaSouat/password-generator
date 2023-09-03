@@ -10,7 +10,7 @@ export interface ButtonProps {
 
 export const Button: FC<ButtonProps> = ({ children, onClick }) => {
   return (
-    <button className={styles.button} onClick={onClick}>
+    <button type="button" className={styles.button} onClick={onClick}>
       <Typography variant="body" tag="span">
         {children}
       </Typography>
