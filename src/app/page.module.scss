@@ -1,24 +1,38 @@
 @use "sass:map";
 @import "../styles/variables";
+@import "../styles/mixins.scss";
 
 .main {
   display: flex;
   justify-content: center;
-  padding: 3rem;
-  min-height: 350vh;
+  padding: 4rem 1rem;
+  min-height: 100vh;
+  box-sizing: border-box;
   background-color: map.get($colors, "black");
   color: map.get($colors, "white");
+
+  @include breakpoint-min(map.get($breakpoints, "md")) {
+    padding: 8rem 0 0 0;
+  }
 }
 
 .content {
-  min-width: 28.125rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+  width: 100%;
+
+  @include breakpoint-min(map.get($breakpoints, "md")) {
+    gap: 2rem;
+    width: 28.125rem;
+  }
 }
 
 .title {
   color: map.get($colors, "light-grey");
-  margin-bottom: 2rem;
   text-align: center;
+
+  @include breakpoint-min(map.get($breakpoints, "md")) {
+    margin-bottom: 2rem;
+  }
 }
