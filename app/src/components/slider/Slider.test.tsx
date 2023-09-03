@@ -1,14 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Slider } from "./Slider";
 
-window.ResizeObserver =
-  window.ResizeObserver ||
-  jest.fn().mockImplementation(() => ({
-    disconnect: jest.fn(),
-    observe: jest.fn(),
-    unobserve: jest.fn(),
-  }));
-
 describe("Slider", () => {
   test("should render the slider with the right elements (label, value & input)", () => {
     render(
@@ -23,7 +15,7 @@ describe("Slider", () => {
     );
 
     const slider = screen.getByRole("slider", {
-      name: "slider-characters-length",
+      name: "slider-thumb",
     });
 
     expect(slider).toHaveAttribute("aria-valuemin", "1");

@@ -47,10 +47,7 @@ export const Slider: FC<SliderProps> = ({
           <RadixSlider.Range className={styles.range} />
         </RadixSlider.Track>
 
-        <RadixSlider.Thumb
-          className={styles.thumb}
-          aria-label={`slider-${id}`}
-        />
+        <RadixSlider.Thumb className={styles.thumb} aria-label="slider-thumb" />
       </RadixSlider.Root>
     </div>
   );

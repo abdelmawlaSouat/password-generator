@@ -23,7 +23,7 @@ export const capitalization = (values: AppState) => {
   return;
 };
 
-const getPasswordStrengthStatus = (password: string) => {
+export const getPasswordStrengthStatus = (password: string) => {
   const strength = passwordStrength(password);
 
   if (strength.value === "Too weak") {
@@ -86,6 +86,7 @@ export const PasswordGeneratorForm: FC<PasswordGeneratorFormProps> = ({
       <div className={styles.checkboxesWrapper}>
         <Checkbox
           label="Include Uppercase Letters"
+          id="uppercase"
           onChange={(value) =>
             setValues({ ...values, includeUppercaseLetters: value })
           }
@@ -94,6 +95,7 @@ export const PasswordGeneratorForm: FC<PasswordGeneratorFormProps> = ({
 
         <Checkbox
           label="Include Lowercase Letters"
+          id="lowercase"
           onChange={(value) =>
             setValues({ ...values, includeLowercaseLetters: value })
           }
@@ -102,12 +104,14 @@ export const PasswordGeneratorForm: FC<PasswordGeneratorFormProps> = ({
 
         <Checkbox
           label="Include Numbers"
+          id="numbers"
           onChange={(value) => setValues({ ...values, includeNumbers: value })}
           checked={values.includeNumbers}
         />
 
         <Checkbox
           label="Include Symbols"
+          id="symbols"
           onChange={(value) => setValues({ ...values, includeSymbols: value })}
           checked={values.includeSymbols}
         />
