@@ -50,19 +50,29 @@ export const PasswordGeneratorForm: FC<PasswordGeneratorFormProps> = ({
   setValues,
 }) => {
   const onClick = () => {
+    let newValues = values;
+
+    if (
+      !newValues.includeUppercaseLetters &&
+      !newValues.includeLowercaseLetters
+    ) {
+      newValues.includeUppercaseLetters = true;
+      newValues.includeLowercaseLetters = true;
+    }
+
     const password = generate({
-      length: values.characterLength,
+      length: newValues.characterLength,
       // @ts-ignore
       charset: [
         "alphabetic",
-        values.includeNumbers ? "numeric" : "",
-        values.includeSymbols ? SYMBOLS : "",
+        newValues.includeNumbers ? "numeric" : "",
+        newValues.includeSymbols ? SYMBOLS : "",
       ],
-      capitalization: capitalization(values),
+      capitalization: capitalization(newValues),
     });
 
     setValues({
-      ...values,
+      ...newValues,
       password,
       strengthStatus: getPasswordStrengthStatus(password),
     });
